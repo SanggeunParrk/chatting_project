@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends Activity {
     RecyclerView RecyclerView_ChatList;
     EditText EditText_Msg;
@@ -19,10 +22,13 @@ public class MainActivity extends Activity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private ArrayList<ChatData> myDataset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        myDataset = new ArrayList<>();
+        myDataset.add(new ChatData());
         setContentView(R.layout.activity_main);
         recyclerView = (RecyclerView) findViewById(R.id.RecyclerView_ChatList);
 
@@ -33,6 +39,7 @@ public class MainActivity extends Activity {
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+
 
         // specify an adapter (see also next example)
         mAdapter = new MyAdapter(myDataset);
